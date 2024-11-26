@@ -17,7 +17,7 @@
     - Currently ConnectionError: ERR#0015: error 403, try again later
 
 ## 3. Running instruction
-1. Create venv `python -m venv .venv` and activate it `source .venv/bin/activate`.
+1. Create venv `python -m venv .venv` and activate it `source .venv/bin/activate`. 
 
 2. Install packages using `pip install -r requirements.txt`.
 

@@ -121,4 +121,6 @@ In conducting this project, I am committed to adhering to the highest ethical st
 By adhering to these principles, I aim to contribute to the field of financial data analysis in a manner that is ethical, responsible, and beneficial to the broader community.
 
 # 9. Open source license
+This dataset is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License.
+
 This dataset includes financial data sourced from Yahoo Finance via the `yfinance` library. Users of this dataset should comply with Yahoo Finance's [terms of service](https://legal.yahoo.com/us/en/yahoo/terms/otos/index.html).

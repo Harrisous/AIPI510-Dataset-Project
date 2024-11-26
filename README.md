@@ -16,4 +16,9 @@
     - it connects to investcom to get data
     - Currently ConnectionError: ERR#0015: error 403, try again later
 
-3. 
+## 3. Running instruction
+1. Create venv `python -m venv .venv` and activate it `source .venv/bin/activate`.
+
+2. Install packages using `pip install -r requirements.txt`.
+
+3. Run main.py using `python main.py` to collect data. Interval and start/end data can be modified. 

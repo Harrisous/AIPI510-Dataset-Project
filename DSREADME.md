@@ -4,6 +4,14 @@
 Predicting movements in stock prices can provide values for investment and risk management. Recent advancements in data science and machine learning offer the potential to enhance stock price predictions by integrating diverse data sources. This dataset aims to generate a landscape of the US stock market and economy movement, and provide a solid background for further modeling to help people make strategic decisions.
 
 # 2. Description of data
+All data are set to be sourced from 1/1/1980 to 12/31/2020 with interval being 1 month. Each file contains open, close, high, low and volume:
+- bonds: contains 13-Week Treasury Bill (IRX), 5-Year Treasury Note (FVX), 10-Year Treasury Note (TNX), 30-Year Treasury Bond (TYX)
+
+- indices: this folder holds the data for DJI, GSPC and RUT indices (DJI has data after 1992, and RUT only have data later than 1987)
+
+- stocks: contains all stocks in S&P 500, the list is sourced from wiki: https://en.wikipedia.org/wiki/List_of_S%26P_500_companies, the stock only has its price after its birth date.
+
+- exchaneg: exchange data regrading USD, data are from after 1990s
 
 # 3. Power analysis results
 To study the correlation between the stock dataset and economic indicators, the power analysis is performed using alpha=0.5 (Type I error) and power=0.9 (for Type II error) and effect size is 0.3 and the correlation is using Cohen's d for correlation ((M1-M2)/SD). The code for finding sample size is as follows:
@@ -24,10 +32,78 @@ print(f"Required sample size for correlation study: {sample_size}")
 The result is 233, which means at least 233 data points must to obtained to meet the requirement.
 
 # 4. Exploratory data analysis 
-Please see the link to exploratory data analysis in the following link.
+Please see the link to exploratory data analysis:
+```
+Exploratory Data Analysis for ^IRX.csv
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 433 entries, NaT to 2020-12-01
+Data columns (total 6 columns):
+ #   Column     Non-Null Count  Dtype 
+---  ------     --------------  ----- 
+ 0   Adj Close  433 non-null    object
+ 1   Close      433 non-null    object
+ 2   High       433 non-null    object
+ 3   Low        433 non-null    object
+ 4   Open       433 non-null    object
+ 5   Volume     433 non-null    object
+dtypes: object(6)
+memory usage: 23.7+ KB
+None
+Exploratory Data Analysis for AUDUSD=X.csv
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 176 entries, NaT to 2020-12-01
+Data columns (total 6 columns):
+ #   Column     Non-Null Count  Dtype 
+---  ------     --------------  ----- 
+ 0   Adj Close  176 non-null    object
+ 1   Close      176 non-null    object
+ 2   High       176 non-null    object
+ 3   Low        176 non-null    object
+ 4   Open       176 non-null    object
+ 5   Volume     176 non-null    object
+dtypes: object(6)
+memory usage: 9.6+ KB
+None
+Exploratory Data Analysis for ^DJI.csv
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 347 entries, 1992-02-01 to 2020-12-01
+Data columns (total 8 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   Open          347 non-null    float64
+ 1   High          347 non-null    float64
+ 2   Low           347 non-null    float64
+ 3   Close         347 non-null    float64
+ 4   Adj Close     347 non-null    float64
+ 5   Volume        347 non-null    int64  
+ 6   Dividends     347 non-null    float64
+ 7   Stock Splits  347 non-null    float64
+dtypes: float64(7), int64(1)
+memory usage: 24.4 KB
+None
+Exploratory Data Analysis for JBHT.csv
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 432 entries, 1985-01-01 to 2020-12-01
+Data columns (total 8 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   Open          432 non-null    float64
+ 1   High          432 non-null    float64
+ 2   Low           432 non-null    float64
+ 3   Close         432 non-null    float64
+ 4   Adj Close     432 non-null    float64
+ 5   Volume        432 non-null    int64  
+ 6   Dividends     432 non-null    float64
+ 7   Stock Splits  432 non-null    float64
+dtypes: float64(7), int64(1)
+memory usage: 30.4 KB
+None
+```
+![alt text](photos/image_5_stocks.png)
+![alt text](photos/image_indices.png)
 
 # 5. Link to publicly available data sourcing code repository
-
+https://github.com/Harrisous/AIPI510-Dataset-Project.git
 
 # 6. Ethics statement
 In conducting this project, I am committed to adhering to the highest ethical standards. The data used in this project is sourced from publicly available APIs and libraries, ensuring transparency and accessibility. I acknowledge the importance of responsible data usage and am committed to the following principles:
@@ -44,4 +120,5 @@ In conducting this project, I am committed to adhering to the highest ethical st
 
 By adhering to these principles, I aim to contribute to the field of financial data analysis in a manner that is ethical, responsible, and beneficial to the broader community.
 
-# 9. Open source license included
+# 9. Open source license
+This dataset includes financial data sourced from Yahoo Finance via the `yfinance` library. Users of this dataset should comply with Yahoo Finance's [terms of service](https://legal.yahoo.com/us/en/yahoo/terms/otos/index.html).

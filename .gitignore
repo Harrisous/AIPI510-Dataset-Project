@@ -1,4 +1,6 @@
 .venv
 data/
 __pycache__/
-not_important
+not_important/
+exploratory.ipynb
+photos/

@@ -1,9 +1,27 @@
-import investpy
+import yfinance as yf
 import pandas as pd
+import os
 
-def load_interest_rate_data(from_date="01/01/1980", to_date="12/31/2020"):
-    interest_rates = investpy.get_bonds()
-    return interest_rates
+def load_bond_yield_data(ticker, start="1980-01-01", end="2020-12-31", interval="1d"):
+    bond_data = yf.download(ticker, start=start, end=end, interval=interval)
+    return bond_data
 
-bond_data = investpy.get_bond_historical_data(bond='U.S. 10Y', from_date='01/01/2020', to_date='01/01/2021')
-print(bond_data.head())
+def save_bond_yield_data(start="1980-01-01", end="2020-12-31", interval="1d"):
+    tickers = {
+        "13-Week Treasury Bill": "^IRX",
+        "5-Year Treasury Note": "^FVX",
+        "10-Year Treasury Note": "^TNX",
+        "30-Year Treasury Bond": "^TYX"
+    }
+
+    for name, ticker in tickers.items():
+        df = load_bond_yield_data(ticker, start=start, end=end, interval=interval)
+        df.reset_index(inplace=True)
+        df["Date"] = pd.to_datetime(df["Date"]).dt.strftime('%Y-%m-%d')
+        path = os.path.join("data", "bonds", f"{ticker}.csv")
+        if os.path.exists(path):
+            os.remove(path)
+        df.to_csv(path, index=False)
+    print("Data saved to data/bonds")
+
+
